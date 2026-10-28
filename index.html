@@ -163,7 +163,8 @@
     }
     .face::before { content: ""; position: absolute; inset: 9px; border: 1px dashed #9bcfe3; border-radius: 19px; pointer-events: none; }
     .front { justify-content: center; background: linear-gradient(150deg, var(--surface), var(--surface-soft) 75%, #f5efff); }
-    .back { transform: rotateY(180deg); justify-content: flex-start; gap: 12px; overflow-y: auto; scrollbar-width: thin; }
+    .back { transform: rotateY(180deg); justify-content: flex-start; overflow: hidden; }
+    .back-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 12px; width: 100%; height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
     .tiny-tag { position: relative; padding: 6px 11px; border: 1px solid #c5e5f2; border-radius: 99px; background: #fff; color: var(--blue-dark); font-size: .77rem; }
 
     .mascot { position: relative; display: grid; place-items: center; width: 130px; height: 122px; filter: drop-shadow(0 10px 9px rgba(48, 112, 145, .16)); }
@@ -277,7 +278,7 @@
       body { padding: 20px 12px 28px; }
       .scene { height: 490px; }
       .face { padding: 22px 18px; }
-      .back { gap: 10px; }
+      .back-content { gap: 10px; }
       .message { font-size: .86rem; line-height: 1.42; }
       .game-panel { padding: 18px; }
       .game-tile { font-size: 1.55rem; }
@@ -326,20 +327,22 @@
         </div>
 
         <div class="face back" id="card-back" aria-hidden="true" inert>
-          <div class="decorations" aria-hidden="true">🐱 ☁️ 🎀 🐾</div>
-          <h2>Para Alondra, con mucho cariño 💌</h2>
-          <p class="message"><strong>¡Feliz cumpleaños, Alondra! ✨💗</strong></p>
-          <p class="message">Quería hacerte algo diferente, algo que no fuera simplemente un mensaje más entre todos los que seguramente recibirás hoy. Así que decidí preparar este pequeño detalle, con mucho cariño y pensando en ti, esperando que al verlo te saque una sonrisa.</p>
-          <p class="message">Deseo de corazón que este nuevo año de tu vida esté lleno de momentos bonitos, nuevas oportunidades, sueños que poco a poco se hagan realidad y personas que te recuerden lo valiosa que eres.</p>
-          <p class="message">Espero que hoy te consientan muchísimo, que te rías hasta que te duela la cara y que tengas tantos momentos bonitos que, cuando los recuerdes después, no puedas evitar sonreír. Y, por supuesto, que nunca te falten los gatitos, las cosas bonitas y un poquito de esa magia de Cinnamoroll que tanto te gusta. 🐱☁️</p>
-          <p class="message">Me alegra que formes parte de mi vida y quería aprovechar este día para regalarte algo hecho especialmente para ti. Quizá sea un detalle pequeño, pero está hecho con una intención muy bonita: recordarte que mereces muchas cosas buenas y que ojalá la vida te sorprenda con más motivos para sonreír de los que puedas contar.</p>
-          <p class="message">Porque no solo deseo que hoy seas feliz por ser tu cumpleaños, sino también que encuentres felicidad en esos días normales que, sin esperarlo, terminan convirtiéndose en recuerdos especiales.</p>
-          <p class="message"><strong>¡Feliz cumpleaños, Alondra! 🎂💗</strong></p>
-          <p class="message">Espero que disfrutes muchísimo tu día y que este pequeño regalito consiga formar parte de tus recuerdos bonitos.</p>
-          <p class="signoff"><strong>Con mucho cariño, Oswaldo</strong><br>(aunque todos me llaman porterito) 🌷</p>
-          <div class="back-actions">
-            <button class="btn" id="more-confetti" type="button">¡Más gatitos! 🐱</button>
-            <button class="btn secondary" id="close-card" type="button">Volver a cerrar</button>
+          <div class="back-content">
+            <div class="decorations" aria-hidden="true">🐱 ☁️ 🎀 🐾</div>
+            <h2>Para Alondra, con mucho cariño 💌</h2>
+            <p class="message"><strong>¡Feliz cumpleaños, Alondra! ✨💗</strong></p>
+            <p class="message">Quería hacerte algo diferente, algo que no fuera simplemente un mensaje más entre todos los que seguramente recibirás hoy. Así que decidí preparar este pequeño detalle, con mucho cariño y pensando en ti, esperando que al verlo te saque una sonrisa.</p>
+            <p class="message">Deseo de corazón que este nuevo año de tu vida esté lleno de momentos bonitos, nuevas oportunidades, sueños que poco a poco se hagan realidad y personas que te recuerden lo valiosa que eres.</p>
+            <p class="message">Espero que hoy te consientan muchísimo, que te rías hasta que te duela la cara y que tengas tantos momentos bonitos que, cuando los recuerdes después, no puedas evitar sonreír. Y, por supuesto, que nunca te falten los gatitos, las cosas bonitas y un poquito de esa magia de Cinnamoroll que tanto te gusta. 🐱☁️</p>
+            <p class="message">Me alegra que formes parte de mi vida y quería aprovechar este día para regalarte algo hecho especialmente para ti. Quizá sea un detalle pequeño, pero está hecho con una intención muy bonita: recordarte que mereces muchas cosas buenas y que ojalá la vida te sorprenda con más motivos para sonreír de los que puedas contar.</p>
+            <p class="message">Porque no solo deseo que hoy seas feliz por ser tu cumpleaños, sino también que encuentres felicidad en esos días normales que, sin esperarlo, terminan convirtiéndose en recuerdos especiales.</p>
+            <p class="message"><strong>¡Feliz cumpleaños, Alondra! 🎂💗</strong></p>
+            <p class="message">Espero que disfrutes muchísimo tu día y que este pequeño regalito consiga formar parte de tus recuerdos bonitos.</p>
+            <p class="signoff"><strong>Con mucho cariño, Oswaldo</strong><br>(aunque todos me llaman porterito) 🌷</p>
+            <div class="back-actions">
+              <button class="btn" id="more-confetti" type="button">¡Más gatitos! 🐱</button>
+              <button class="btn secondary" id="close-card" type="button">Volver a cerrar</button>
+            </div>
           </div>
         </div>
       </div>
